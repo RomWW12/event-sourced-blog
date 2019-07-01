@@ -17,4 +17,8 @@ export class AppService {
   async getAllArticles(): Promise<Article[]> {
     return this.articleRepository.find();
   }
-}
+
+  async getOneArticle(id: string): Promise<Article> {
+    return this.articleRepository.findOne(id);
+  }
+ }
