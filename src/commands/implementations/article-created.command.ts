@@ -5,6 +5,4 @@ export class CreateArticleCommand implements ICommand {
   constructor(
     public readonly articleDto: ArticleDto,
   ) {}
-
-  
 }

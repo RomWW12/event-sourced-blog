@@ -1,13 +1,14 @@
-import { Module, OnModuleInit } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CqrsModule, CommandBus } from '@nestjs/cqrs';
+import { CqrsModule } from '@nestjs/cqrs';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Article } from './articles/article.entity';
 import { CreateArticleHandler } from './commands/handlers/create-article.handler';
-import { ModuleRef } from '@nestjs/core';
+import { EventSaga } from './events/event.saga';
 
 export const CommandHandlers = [CreateArticleHandler];
+export const EventHandlers = [CreateArticleHandler];
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ export const CommandHandlers = [CreateArticleHandler];
   controllers: [AppController],
   providers: [
     AppService,
+    EventSaga,
     ...CommandHandlers,
   ],
 })

@@ -10,4 +10,16 @@ export class ArticleCreatedEvent implements IEvent {
     this.name = payload.name;
     this.content = payload.content;
   }
+
+  get getName() {
+    return this.name;
+  }
+
+  get getContent() {
+    return this.content;
+  }
+
+  get getAggregateId() {
+    return this.aggregateId;
+  }
 }

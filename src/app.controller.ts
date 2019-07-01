@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 import ArticleDTO from './articles/article.dto';
+import { Article } from './articles/article.entity';
 
 @Controller('/articles')
 export class AppController {
@@ -12,8 +13,9 @@ export class AppController {
   }
 
   @Post()
-  createArticle(@Body() articleDto: ArticleDTO): Promise<ArticleDTO> {
-    return this.appService.storeArticle(articleDto);
+  createArticle(@Body() articleDto: ArticleDTO): Promise<any> {
+    const toto = this.appService.storeArticle(articleDto);
+    return toto;
   }
 
   @Get(':id')
