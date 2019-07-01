@@ -7,11 +7,8 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('/articles')
-  getArticles(): ArticleDTO {
-    return {
-      name: 'toto',
-      content: 'My first ever article',
-    };
+  getArticles(): Promise<ArticleDTO[]> {
+    return this.appService.getAllArticles();
   }
 
   @Post('/articles')
