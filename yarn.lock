@@ -39,6 +39,11 @@
     optional "0.1.4"
     uuid "3.3.2"
 
+"@nestjs/cqrs@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/cqrs/-/cqrs-6.0.0.tgz#a9dc850e04f8bed40cad3a13106f6cb085b2b985"
+  integrity sha512-d2jKfVRJsq14VU7w8sELhROVok3X9hxeYhRkOLX8OQtD18E6PhMWsVvIY/HE0G0YHYBQmyvHpusz3iPmDmlJow==
+
 "@nestjs/platform-express@^6.0.0":
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-6.3.2.tgz#2b224a87daa193ffa56ef64acd48f28b4a754060"

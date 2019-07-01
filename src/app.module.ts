@@ -1,8 +1,13 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CqrsModule, CommandBus } from '@nestjs/cqrs';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Article } from './articles/article.entity';
+import { CreateArticleHandler } from './commands/handlers/create-article.handler';
+import { ModuleRef } from '@nestjs/core';
+
+export const CommandHandlers = [CreateArticleHandler];
 
 @Module({
   imports: [
@@ -17,8 +22,12 @@ import { Article } from './articles/article.entity';
       synchronize: true,
     }),
     TypeOrmModule.forFeature([Article]),
+    CqrsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    ...CommandHandlers,
+  ],
 })
 export class AppModule {}
