@@ -8,9 +8,10 @@ import { Event } from './events/event.entity';
 import { CreateArticleHandler } from './commands/handlers/create-article.handler';
 import { EventSaga } from './events/event.saga';
 import { ArticleRepository } from './articles/article.repository';
+import { Catalog } from './catalog/catalog.entity';
+import { AddIdToCatalogHandler } from './commands/handlers/add-it-to-catalog.handler';
 
-export const CommandHandlers = [CreateArticleHandler];
-export const EventHandlers = [CreateArticleHandler];
+export const CommandHandlers = [CreateArticleHandler,  AddIdToCatalogHandler];
 
 @Module({
   imports: [
@@ -24,7 +25,7 @@ export const EventHandlers = [CreateArticleHandler];
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Article, Event]),
+    TypeOrmModule.forFeature([Article, Event, Catalog]),
     CqrsModule,
   ],
   controllers: [AppController],
