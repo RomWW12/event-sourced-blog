@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 
 import ArticleDTO from './articles/article.dto';
 import { Article } from './articles/article.entity';
+import { ArticleRepository as CustomArticleRepository } from './articles/article.repository';
 import { CreateArticleCommand } from './commands/implementations/article-created.command';
 
 @Injectable()
@@ -13,6 +14,8 @@ export class AppService {
   constructor(
     @InjectRepository(Article)
     private readonly articleRepository: Repository<Article>,
+
+    private readonly customArticleRepository: CustomArticleRepository,
 
     private readonly commandBus: CommandBus,
   ) {}
@@ -28,6 +31,6 @@ export class AppService {
   }
 
   async getOneArticle(id: string): Promise<Article> {
-    return this.articleRepository.findOne(id);
+    return this.customArticleRepository.findById(id);
   }
  }
