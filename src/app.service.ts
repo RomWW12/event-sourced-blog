@@ -12,9 +12,6 @@ import { CreateArticleCommand } from './commands/implementations/article-created
 @Injectable()
 export class AppService {
   constructor(
-    @InjectRepository(Article)
-    private readonly articleRepository: Repository<Article>,
-
     private readonly customArticleRepository: CustomArticleRepository,
 
     private readonly commandBus: CommandBus,

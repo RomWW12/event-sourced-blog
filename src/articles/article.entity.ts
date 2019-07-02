@@ -6,15 +6,9 @@ import * as uuidv4 from 'uuid/v4';
 
 import { ArticleCreatedEvent } from '../events/article-created.event';
 
-@Entity()
 export class Article extends AggregateRoot {
-  @PrimaryGeneratedColumn('uuid')
   id: string;
-
-  @Column()
   name: string;
-
-  @Column()
   content: string;
 
   onArticleCreatedEvent(event: ArticleCreatedEvent) {

@@ -25,7 +25,7 @@ export const CommandHandlers = [CreateArticleHandler,  AddIdToCatalogHandler];
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Article, Event, Catalog]),
+    TypeOrmModule.forFeature([Event, Catalog]),
     CqrsModule,
   ],
   controllers: [AppController],
